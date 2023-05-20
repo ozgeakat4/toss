@@ -21,7 +21,8 @@ public class StepDefinition {
 	
 	public StepDefinition()throws IOException, ParseException  {
 		AppTest = new AppiumTest();
-		WebTest = new SeleniumTest(); 
+		WebTest = new SeleniumTest();
+		String status; 
 	}
 	@Given("open webpage {string}")
 	public void open_webpage(String string) {
@@ -124,51 +125,126 @@ public class StepDefinition {
 	
 	@Then("charger is {word}")
 	public void charger_is (String status ) throws MalformedURLException { 
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("User");
+		this.WebTest.driver.driver.findElement(By.id("status")).click();
+		status = this.WebTest.driver.driver.findElement(By.id("status")).getText();
+		if(status.equals("avaliable")){
+			System.out.println(true);
+		}
+		else{
+			System.out.println(false);
+		}
 	}
 	
 	@Then("reserve charger on {word}")
 	public void reserve_charger_on (String platform ) throws MalformedURLException { 
-		
+		try {
+			if(system.equals("web")) {
+				this.WebTest.driver.driver.findElement(By.id("FieldFilter")).click();
+				this.WebTest.driver.driver.findElement(By.id("FieldFilter")).sendKeys("DV-BURAK6");
+				this.WebTest.driver.driver.findElement(By.id("dropdownMenuButton")).click();
+				this.WebTest.driver.driver.findElement(By.id("reserve")).click();
+			}
+			else if(system.equals("app")){
+				
+				this.AppTest.driver.driver.findElement(By.id("button")).click();
+				this.AppTest.driver.driver.findElementByXPath(("")).click();
+				this.AppTest.driver.driver.findElementByXPath(("")).sendKeys("DV-BURAK6");
+				this.AppTest.driver.driver.findElement(By.id("button")).click();
+			}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		throw new io.cucumber.java.PendingException(e.toString());
+	}
 	}
 	
 	@Then("start charge on {word}")
 	public void start_charge_on (String platform ) throws MalformedURLException { 
-		
+		try {
+			if(system.equals("web")) {
+				this.WebTest.driver.driver.findElement(By.id("FieldFilter")).click();
+				this.WebTest.driver.driver.findElement(By.id("FieldFilter")).sendKeys("DV-BURAK6");
+				this.WebTest.driver.driver.findElement(By.id("dropdownMenuButton")).click();
+				this.WebTest.driver.driver.findElement(By.id("start")).click();
+			}
+			else if(system.equals("app")){
+				
+				this.AppTest.driver.driver.findElement(By.id("button")).click();
+				this.AppTest.driver.driver.findElementByXPath(("")).click();
+				this.AppTest.driver.driver.findElementByXPath(("")).sendKeys("DV-BURAK6");
+				this.AppTest.driver.driver.findElement(By.id("button")).click();
+			}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		throw new io.cucumber.java.PendingException(e.toString());
+	}
 	}
 	
 
 	@Then("check user status")
 	public void check_user_status() throws MalformedURLException { 
-		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("User");
+		this.WebTest.driver.driver.findElement(By.id("status")).click();
+		status = this.WebTest.driver.driver.findElement(By.id("status")).getText();
+		if(status.equals("active")){
+			System.out.println(true);
+		}
+		else{
+			System.out.println(false);
+		}
 	}
 	
 	@Then("signup app")
 	public void signup_app() throws MalformedURLException { 
-		
+		this.AppTest.driver.driver.findElement(By.id("name")).click();
+		this.AppTest.driver.driver.findElement(By.id("name")).sendKeys("name1");
+		this.AppTest.driver.driver.findElement(By.id("surname")).click();
+		this.AppTest.driver.driver.findElement(By.id("surname")).sendKeys("surname1");
+		this.AppTest.driver.driver.findElement(By.id("phoneno")).click();
+		this.AppTest.driver.driver.findElement(By.id("surname")).sendKeys("5550552010");
+		this.AppTest.driver.driver.findElement(By.id("save")).click();
 	}
 	@Then("activate user")
 	public void activate_user() throws MalformedURLException { 
-		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("User");
+		this.WebTest.driver.driver.findElement(By.id("activate")).click();
+
 	}
 	
     @When("delete device on web")
 	public void delete_device_on_web() throws MalformedURLException { 
-		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("device");
+		this.WebTest.driver.driver.findElement(By.id("deleteButton")).click();
+
 	}
     @Then("delete user on web")
 	public void delete_user_on_web() throws MalformedURLException { 
-		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("user");
+		this.WebTest.driver.driver.findElement(By.id("deleteButton")).click();
 	}
     @Then("change device status on web")
 	public void change_device_status_on_web() throws MalformedURLException { 
-		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("User");
+		this.WebTest.driver.driver.findElement(By.id("busy")).click();
 	}
     @Then("change user status on web")
  	public void change_user_status_on_web() throws MalformedURLException { 
- 		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("user");
+		this.WebTest.driver.driver.findElement(By.id("deactivated")).click();
  	}
     @Then("add rfid card")
  	public void add_rfid_card() throws MalformedURLException { 
- 		
+		this.WebTest.driver.driver.findElement(By.id("")).click();
+		this.WebTest.driver.driver.findElement(By.id("search")).sendKeys("user");
+		this.WebTest.driver.driver.findElement(By.id("addrfid")).click();
+		this.WebTest.driver.driver.findElement(By.id("rfidno")).sendKeys("123456");
+		this.WebTest.driver.driver.findElement(By.id("save")).click();
  	}
 }
